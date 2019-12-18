@@ -138,7 +138,7 @@ public class Browser implements Runnable{
 			
 		} catch (FileNotFoundException fnfe) {
 			try {
-                                if((!fileRequested.endsWith("/")) && (!fileRequested.endsWith("html"))){
+                                if((!fileRequested.endsWith("/")) && (!fileRequested.endsWith("html") && !fileRequested.endsWith("css"))){
                                     MovedPermanently(out, dataOut, fileRequested);
                                 } else {
                                     fileNotFound(out, dataOut, fileRequested);
@@ -186,7 +186,9 @@ public class Browser implements Runnable{
 	private String getContentType(String fileRequested) {
 		if (fileRequested.endsWith(".htm")  ||  fileRequested.endsWith(".html"))
 			return "text/html";
-		else
+                else if (fileRequested.endsWith(".css"))
+                    return "text/css";
+                else
 			return "text/plain";
 	}
         
