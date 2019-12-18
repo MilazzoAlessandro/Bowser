@@ -140,8 +140,9 @@ public class Browser implements Runnable{
 			try {
                                 if((!fileRequested.endsWith("/")) && (!fileRequested.endsWith("html"))){
                                     MovedPermanently(out, dataOut, fileRequested);
-                                }
-				fileNotFound(out, dataOut, fileRequested);
+                                } else {
+                                    fileNotFound(out, dataOut, fileRequested);
+                                    }
 			} catch (IOException ioe) {
 				System.err.println("Error with file not found exception : " + ioe.getMessage());
 			}
