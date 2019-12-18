@@ -138,7 +138,7 @@ public class Browser implements Runnable{
 			
 		} catch (FileNotFoundException fnfe) {
 			try {
-                                if(fileRequested.endsWith("testi")){
+                                if((!fileRequested.endsWith("/")) && (!fileRequested.endsWith("html"))){
                                     MovedPermanently(out, dataOut, fileRequested);
                                 }
 				fileNotFound(out, dataOut, fileRequested);
@@ -197,7 +197,7 @@ public class Browser implements Runnable{
                     byte[] fileData = readFileData(file, fileLength);
 		
                     out.println("HTTP/1.1 301 Moved Permanently");
-                    out.println("Location: http://localhost:8080/testi/");
+                    out.println("Location:" + fileRequested +"/");
 
                     out.println(); // blank line between headers and content, very important !
                     out.flush(); // flush character output stream buffer
